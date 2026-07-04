@@ -4,6 +4,46 @@ A modern, high-performance logistics and shipment dispatch platform for customer
 
 ---
 
+## Project Links
+
+| Resource | Link |
+| :--- | :--- |
+| **GitHub Repository** (branch: `main`) | [https://github.com/flyingvaibhav/last-mile-delivery-tracker](https://github.com/flyingvaibhav/last-mile-delivery-tracker) |
+| **Live Demo** | [https://last-mile-delivery-tracker-gules.vercel.app](https://last-mile-delivery-tracker-gules.vercel.app) |
+
+### Quick Demo (no sign-up required)
+
+1. Open the [live demo](https://last-mile-delivery-tracker-gules.vercel.app/sign-in).
+2. Click **Try Live Demo Sandbox**.
+3. Choose **Customer**, **Delivery Agent**, or **Admin** to explore each portal.
+4. Use the amber demo banner to switch roles, reset sandbox data, or view simulated email logs.
+
+### Run Locally
+
+```bash
+git clone https://github.com/flyingvaibhav/last-mile-delivery-tracker.git
+cd last-mile-delivery-tracker
+npm install
+cp .env.example .env.local   # Windows: copy .env.example .env.local
+# Edit .env.local — set MONGODB_URI and Clerk keys (see Getting Started below)
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000). Use **Try Live Demo Sandbox** on the sign-in page, or configure Clerk for real authentication.
+
+### Deployment (Vercel)
+
+This project is deployed on [Vercel](https://vercel.com). Required environment variables:
+
+- `MONGODB_URI` — MongoDB Atlas connection string
+- `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` — required even for Demo Mode (Clerk initializes on every request)
+- `CLERK_SECRET_KEY` — required even for Demo Mode
+- `NEXT_PUBLIC_APP_URL` — your Vercel URL (e.g. `https://last-mile-delivery-tracker-gules.vercel.app`)
+
+Optional: `CLERK_WEBHOOK_SECRET` (user sync), SMTP vars (real emails), Mapbox/Twilio tokens.
+
+---
+
 ## Technical Stack
 
 * **Frontend**: Next.js 16 (App Router) + Tailwind CSS v4 + Lucide Icons + custom dark-first components (interactive timelines, receipt price estimates, and animated route previews).
@@ -35,17 +75,21 @@ npm install
 ```
 
 ### 3. Setup Environment Variables
-Create a `.env.local` (or copy `.env.example`) in the root:
+Copy `.env.example` to `.env.local` and fill in your values. **Never commit `.env` or `.env.local` to Git.**
+
 ```env
-# MongoDB Connection
+# MongoDB Connection (use MongoDB Atlas for production/Vercel)
 MONGODB_URI=mongodb://localhost:27017/last_mile_delivery
 
-# Clerk Authentication
+# Clerk Authentication (required — app fails without these keys)
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
 CLERK_SECRET_KEY=sk_test_...
 CLERK_WEBHOOK_SECRET=whsec_...
 
-# SMTP Configuration
+# App URL (set to your Vercel domain when deployed)
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+# SMTP Configuration (optional — Demo Mode uses in-app email logs instead)
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your-email@gmail.com
