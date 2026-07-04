@@ -1,0 +1,35 @@
+{
+  "name": "last-mile-delivery-tracker",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test:pricing": "npx tsx scripts/test-pricing.ts"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^7.5.12",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.23.0",
+    "mongoose": "^9.7.3",
+    "next": "16.2.10",
+    "nodemailer": "^9.0.3",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "svix": "^1.96.1",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/nodemailer": "^8.0.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
